@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 //Top most compenent
 var MessageContainer = React.createClass({
   //Spcial method to set state
