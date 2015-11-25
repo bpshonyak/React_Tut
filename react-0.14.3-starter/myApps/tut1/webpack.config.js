@@ -1,6 +1,6 @@
 module.exports = {
-  // context: __dirname + "./",
-  entry: "./RandomMessage.js",
+  context: __dirname,
+  entry: "./RandomMessage.jsx",
 
   output: {
     filename: "bundle.js",
