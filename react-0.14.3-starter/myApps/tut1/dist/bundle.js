@@ -47,6 +47,7 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(2);
 	//Top most compenent
 	var MessageContainer = React.createClass({
 	  displayName: 'MessageContainer',

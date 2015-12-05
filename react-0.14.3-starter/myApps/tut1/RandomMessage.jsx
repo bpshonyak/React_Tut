@@ -3,19 +3,19 @@ var ReactDOM = require('react-dom');
 //Top most compenent
 var MessageContainer = React.createClass({
   //Spcial method to set state
-  getInitialState: function () {
-    return {messages: []}
+  getInitialState: function() {
+    return {
+      messages: []
+    }
   },
   //Event handler -- must be camel case
-  addMessage: function (message) {
+  addMessage: function(message) {
     //Updates the compenent's state
     //Informs React about data change
-    this.setState({
-      messages: this.state.messages.concat([message])
-    });
+    this.setState({messages: this.state.messages.concat([message])});
   },
   //Special method used to render component
-  render: function () {
+  render: function() {
     // Render two other components and pass them props
     return (
       <div>
@@ -27,10 +27,8 @@ var MessageContainer = React.createClass({
 });
 
 var AddMessage = React.createClass({
-  getInitialState: function () {
-    return {
-      newMsg: ''
-    }
+  getInitialState: function() {
+    return {newMsg: ''}
   },
   //Validates a props type
   propTypes: {
@@ -38,21 +36,19 @@ var AddMessage = React.createClass({
     addMsg: React.PropTypes.func.isRequired
   },
   //Updates newMsg as the user types
-  updateMessage: function (e) {
+  updateMessage: function(e) {
     this.setState({newMsg: e.target.value});
   },
   //Adds new message via callback
-  addMessage: function () {
+  addMessage: function() {
     this.props.addMsg(this.state.newMsg);
     //Sets newMsg back to default
-    this.setState({
-      newMsg: ''
-    });
+    this.setState({newMsg: ''});
   },
-  render: function () {
+  render: function() {
     return (
       <div>
-        <input type='text' value={this.state.newMsg} onChange={this.updateMessage} />
+        <input type='text' value={this.state.newMsg} onChange={this.updateMessage}/>
         <button onClick={this.addMessage}>Send</button>
       </div>
     )
@@ -61,43 +57,45 @@ var AddMessage = React.createClass({
 
 //Lists all messages (include lifecycle events)
 var ListMessages = React.createClass({
-    //Create default values for porps
-    getDefaultProps: function () {
-      return {
-        messages: []
-      }
-    },
-    // Invoked once before first render
-    componentWillMount: function(){
-      // Calling setState here does not cause a re-render
-        console.log('In Component Will Mount');
-    },
-    // Invoked once after the first render
-    componentDidMount: function(){
-        // You now have access to this.getDOMNode()
-        console.log('In Component Did Mount');
-    },
-    // Invoked whenever there is a prop change
-    // Called BEFORE render
-    componentWillReceiveProps: function(nextProps){
-        // Not called for the initial render
-        // Previous props can be accessed by this.props
-        // Calling setState here does not trigger an additional re-render
-        console.log('In Component Will Receive Props');
-    },
-    // Called IMMEDIATELY before a component is unmounted
-    componentWillUnmount: function(){
-
-    },
-    render: function () {
+  //Create default values for porps
+  getDefaultProps: function() {
+    return {
+      messages: []
+    }
+  },
+  // Invoked once before first render
+  componentWillMount: function() {
+    // Calling setState here does not cause a re-render
+    console.log('In Component Will Mount');
+  },
+  // Invoked once after the first render
+  componentDidMount: function() {
+    // You now have access to this.getDOMNode()
+    console.log('In Component Did Mount');
+  },
+  // Invoked whenever there is a prop change
+  // Called BEFORE render
+  componentWillReceiveProps: function(nextProps) {
+    // Not called for the initial render
+    // Previous props can be accessed by this.props
+    // Calling setState here does not trigger an additional re-render
+    console.log('In Component Will Receive Props');
+  },
+  // Called IMMEDIATELY before a component is unmounted
+  componentWillUnmount: function() {},
+  render: function() {
     //Formats each message
-    var listItems = this.props.messages.map(function(msg){
-      return <li> {msg} </li>;
+    var listItems = this.props.messages.map(function(msg) {
+      return <li>
+        {msg}
+      </li>;
     });
     //Renders a list of messages
     return (
       <div>
-        <h3> Messages: </h3>
+        <h3>
+          Messages:
+        </h3>
         <ul>
           {listItems}
         </ul>
@@ -107,6 +105,4 @@ var ListMessages = React.createClass({
 });
 
 ReactDOM.render(
-<MessageContainer/>,
-document.getElementById('greeting-div')
-);
+  <MessageContainer/>, document.getElementById('greeting-div'));
